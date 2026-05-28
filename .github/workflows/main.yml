@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@hola-mundo
+        uses: actions/checkout@v3
 
       - name: Mostrar mensaje
         run: echo "Hola Mundo"
