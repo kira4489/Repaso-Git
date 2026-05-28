@@ -1,0 +1,14 @@
+name: Hola Mundo Pipeline
+
+on: [push]
+
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@hola-mundo
+
+      - name: Mostrar mensaje
+        run: echo "Hola Mundo"
