@@ -1,6 +1,9 @@
 name: Hola Mundo Pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   hola-mundo:
