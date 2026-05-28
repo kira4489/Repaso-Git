@@ -1,4 +1,4 @@
-name: Hola Mundo Pipeline
+name: Build Pipeline
 
 on:
   push:
@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  hola-mundo:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v3
 
-      - name: Mostrar mensaje
-        run: echo "Hola Mundo"
+      - name: Ejecutar Build
+        run: echo "Build ejecutándose..."
