@@ -1,4 +1,4 @@
-name: Build Pipeline
+name: Docker Build Pipeline
 
 on:
   push:
@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repositorio
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Ejecutar Build
-        run: echo "Build ejecutándose..."
+      - name: Build Docker Image
+        run: docker build -t mi-app .
