@@ -60,16 +60,10 @@ jobs:
       - name: Esperar pods listos
         run: kubectl wait --for=condition=ready pod -l app=mi-app --timeout=120s
 
-      # -------------------------
-      # VERIFICACIÓN
-      # -------------------------
       - name: Ver pods
         run: kubectl get pods -o wide
 
-      - name: Ver servicios
-        run: kubectl get svc
-      
-      - name: Describir pods
+      - name: Describe pods
         run: kubectl describe pods
 
       - name: Ver logs
