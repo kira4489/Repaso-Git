@@ -51,3 +51,5 @@ jobs:
 
       - name: Kubernetes Service
         run: kubectl apply -f service.yml
+      - name: Ver recursos
+        run: kubectl get pods
