@@ -43,7 +43,9 @@ jobs:
       - name: Create Kubernetes Cluster
         run: kind create cluster
 
-      # 🔥 CLAVE: cargar imagen en KIND
+      # -------------------------
+      # LOAD IMAGE INTO KIND
+      # -------------------------
       - name: Load Docker image into KIND
         run: kind load docker-image mi-app:latest
 
@@ -56,10 +58,15 @@ jobs:
       - name: Kubernetes Service
         run: kubectl apply -f service.yml
 
-       # 🔥 AQUÍ VA
+      # -------------------------
+      # WAIT PODS
+      # -------------------------
       - name: Esperar pods listos
         run: kubectl wait --for=condition=ready pod -l app=mi-app --timeout=120s
 
+      # -------------------------
+      # DEBUG
+      # -------------------------
       - name: Ver pods
         run: kubectl get pods -o wide
 
