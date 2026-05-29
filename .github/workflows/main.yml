@@ -56,11 +56,18 @@ jobs:
       - name: Kubernetes Service
         run: kubectl apply -f service.yml
 
+       # 🔥 AQUÍ VA
+      - name: Esperar pods listos
+        run: kubectl wait --for=condition=ready pod -l app=mi-app --timeout=120s
+
       # -------------------------
       # VERIFICACIÓN
       # -------------------------
       - name: Ver pods
         run: kubectl get pods -o wide
+
+      - name: Listado de pods
+        run: kubectl get pods -l app=mi-app
 
       - name: Ver servicios
         run: kubectl get svc
