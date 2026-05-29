@@ -13,27 +13,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # -------------------------
       # DOCKER
-      # -------------------------
       - name: Build Docker Image
         run: docker build -t mi-app:latest .
 
       - name: Ejecutar contenedor
-        run: docker run mi-app:latest 
+        run: docker run mi-app:latest
 
-      # -------------------------
-      # INSTALL KUBECTL
-      # -------------------------
+      # KUBECTL
       - name: Install kubectl
         run: |
           curl -LO https://dl.k8s.io/release/v1.29.0/bin/linux/amd64/kubectl
           chmod +x kubectl
           sudo mv kubectl /usr/local/bin/
 
-      # -------------------------
-      # INSTALL KIND (KUBERNETES LOCAL EN CI)
-      # -------------------------
+      # KIND
       - name: Install KIND
         run: |
           curl -Lo kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
@@ -43,13 +37,15 @@ jobs:
       - name: Create Kubernetes Cluster
         run: kind create cluster
 
-      # -------------------------
-      # KUBERNETES DEPLOY
-      # -------------------------
+      - name: Check cluster
+        run: kubectl cluster-info
+
+      # DEPLOY
       - name: Kubernetes Deployment
         run: kubectl apply -f deployment.yml
 
       - name: Kubernetes Service
         run: kubectl apply -f service.yml
-      - name: Ver recursos
-        run: kubectl get pods
+
+      - name: Ver pods
+        run: kubectl get pods -o wide
