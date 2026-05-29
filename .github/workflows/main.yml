@@ -17,10 +17,10 @@ jobs:
       # DOCKER
       # -------------------------
       - name: Build Docker Image
-        run: docker build -t mi-app:latest .
+        run: docker build -t proyecto-devops:latest .
 
       - name: Ejecutar contenedor
-        run: docker run -d -p 5000:5000 mi-app:latest
+        run: docker run -d -p 5000:5000 proyecto-devops:latest
 
       # -------------------------
       # KUBECTL
@@ -47,7 +47,7 @@ jobs:
       # LOAD IMAGE INTO KIND
       # -------------------------
       - name: Load Docker image into KIND
-        run: kind load docker-image mi-app:latest
+        run: kind load docker-image proyecto-devops:latest
 
       # -------------------------
       # DEPLOY
@@ -62,7 +62,7 @@ jobs:
       # WAIT PODS
       # -------------------------
       - name: Esperar pods listos
-        run: kubectl wait --for=condition=ready pod -l app=mi-app --timeout=120s
+        run: kubectl wait --for=condition=ready pod -l app=proyecto-devops  --timeout=120s
 
       # -------------------------
       # DEBUG
@@ -74,4 +74,4 @@ jobs:
         run: kubectl describe pods
 
       - name: Ver logs
-        run: kubectl logs -l app=mi-app
+        run: kubectl logs -l app=proyecto-devops 

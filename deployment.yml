@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: mi-app-deployment
+  name: proyecto-devops-deployment
 
 spec:
   replicas: 2
 
   selector:
     matchLabels:
-      app: mi-app
+      app: proyecto-devops
 
   template:
     metadata:
       labels:
-        app: mi-app
+        app: proyecto-devops
 
     spec:
       containers:
-        - name: mi-app
+        - name: proyecto-devops
 
-          image: mi-app:latest
+          image: proyecto-devops:latest
 
           imagePullPolicy: Never
 
