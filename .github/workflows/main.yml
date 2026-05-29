@@ -1,4 +1,4 @@
-name: Docker Build Pipeline
+name: Docker Kubernetes Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,3 +18,9 @@ jobs:
 
       - name: Ejecutar contenedor
         run: docker run mi-app
+
+      - name: Kubernetes Deployment
+        run: kubectl apply -f deployment.yml
+
+      - name: Kubernetes Service
+        run: kubectl apply -f service.yml
