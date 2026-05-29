@@ -67,7 +67,7 @@ jobs:
         run: kubectl get pods -o wide
 
       - name: Listado de pods
-        run: kubectl get pods mi-app-deployment
+        run: kubectl get pods -l app=mi-app
 
       - name: Ver servicios
         run: kubectl get svc
